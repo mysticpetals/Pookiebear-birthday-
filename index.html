@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, Pookie 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: white;
+    font-family: Poppins, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(188,92,180,.22), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255,91,154,.16), transparent 32%),
+        linear-gradient(145deg, #090611, #170b20 50%, #0b0712);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .18;
+    background-image: radial-gradient(#fff 1px, transparent 1px);
+    background-size: 42px 42px;
+}
+
+h1, h2 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 70px 0;
+    position: relative;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.kicker {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #e9a8cf;
+}
+
+.sub {
+    color: #cdbed0;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.btn {
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.08);
+    color: white;
+    border-radius: 999px;
+    padding: 13px 20px;
+    font: 600 13px Poppins;
+    cursor: pointer;
+    transition: .25s;
+    backdrop-filter: blur(8px);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.14);
+}
+
+/* Floating hearts */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 18px;
+    opacity: .7;
+    animation: float 7s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* Hero */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-card {
+    text-align: center;
+    padding: 35px 18px;
+    max-width: 720px;
+    animation: rise 1s ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Envelope */
+
+.envelope {
+    width: 170px;
+    height: 115px;
+    margin: 0 auto 28px;
+    position: relative;
+    background: linear-gradient(145deg, #9d4b86, #d477aa);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(218,103,172,.25);
+    cursor: pointer;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 85px solid transparent;
+    border-right: 85px solid transparent;
+    border-top: 60px solid rgba(255,255,255,.2);
+}
+
+.envelope::after {
+    content: "♡";
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 12vw, 86px);
+    margin: 10px 0;
+}
+
+.open-note {
+    color: #cdbed0;
+    font-size: 13px;
+}
+
+/* Cards */
+
+.card {
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 18px 60px rgba(0,0,0,.22);
+    backdrop-filter: blur(12px);
+}
+
+.allegation {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255,106,168,.12);
+    border: 1px solid rgba(255,106,168,.25);
+    color: #ffb6d5;
+    font-size: 12px;
+}
+
+/* Shameless meter */
+
+.meter-wrap {
+    margin: 28px auto;
+    max-width: 560px;
+}
+
+.meter-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #d8c9da;
+    margin-bottom: 8px;
+}
+
+.meter {
+    height: 14px;
+    border-radius: 99px;
+    background: #2b1b32;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 97%;
+    background: linear-gradient(90deg, #a64d94, #ff75ae);
+    border-radius: 99px;
+    animation: fill 1.5s ease;
+}
+
+@keyframes fill {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 97%;
+    }
+}
+
+/* Reasons */
+
+.reasons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.reason {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.reason:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,.08);
+}
+
+.reason b {
+    display: block;
+    margin-bottom: 7px;
+    color: #ffd0e4;
+}
+
+/* Letter */
+
+.letter {
+    font-family: Georgia, serif;
+    line-height: 1.9;
+    color: #f8eaf2;
+    font-size: 16px;
+    text-align: left;
+    white-space: pre-line;
+}
+
+/* Final */
+
+.final h2 {
+    font-size: clamp(38px, 9vw, 64px);
+    margin: 10px 0;
+}
+
+.final-box {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Toast */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    transform: translate(-50%, 20px);
+    background: #24132d;
+    border: 1px solid rgba(255,255,255,.15);
+    padding: 12px 17px;
+    border-radius: 999px;
+    font-size: 12px;
+    opacity: 0;
+    transition: .3s;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Final burst */
+
+.burst {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    z-index: 30;
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+    from {
+        transform: translate(0,0) scale(.6);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(var(--x),var(--y)) scale(1.3);
+        opacity: 0;
+    }
+}
+
+footer {
+    text-align: center;
+    color: #8e7f93;
+    font-size: 11px;
+    padding: 20px 0 35px;
+}
+
+/* Phone */
+
+@media(max-width:600px) {
+
+    section {
+        padding: 55px 0;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .reasons {
+        grid-template-columns: 1fr;
+    }
+
+    .envelope {
+        width: 145px;
+        height: 100px;
+    }
+
+    .envelope::before {
+        border-left-width: 72px;
+        border-right-width: 72px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-card">
+
+        <div
+            class="envelope"
+            onclick="openSurprise()"
+            aria-label="Open birthday surprise">
+        </div>
+
+        <div class="kicker">
+            a tiny little surprise
+        </div>
+
+        <h1>
+            Happy Birthday,<br>
+            Pookie 💗
+        </h1>
+
+        <p class="open-note">
+            Tap the envelope. You know you want to. 👀
+        </p>
+
+        <button class="btn" onclick="openSurprise()">
+            Open my surprise
+        </button>
+
+    </div>
+
+</section>
+
+
+<main id="main" class="hidden">
+
+<!-- ANNOUNCEMENT -->
+
+<section>
+
+    <div class="container center">
+
+        <div class="kicker">
+            important announcement
+        </div>
+
+        <h2>
+            Someone made something for you.
+        </h2>
+
+        <p class="sub">
+            And before you get emotional, please remember that
+            you are still being investigated for extreme levels
+            of shamelessness.
+        </p>
+
+        <div class="allegation">
+            ⚠️ Accused of being way too cute for your own good
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SHAMELESS METER -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card center">
+
+            <div class="kicker">
+                official investigation
+            </div>
+
+            <h2>
+                How shameless are you?
+            </h2>
+
+            <p class="sub">
+                After extensive research, several complaints,
+                and absolutely no professional qualifications...
+            </p>
+
+            <div class="meter-wrap">
+
+                <div class="meter-top">
+                    <span>Innocent</span>
+                    <b>97%</b>
+                    <span>Shameless</span>
+                </div>
+
+                <div class="meter">
+                    <div class="fill"></div>
+                </div>
+
+            </div>
+
+            <p class="sub">
+                The remaining 3% is probably just you pretending
+                to be innocent.
+            </p>
+
+            <button
+                class="btn"
+                onclick="toast('Case closed. You are shameless. 😭💗')">
+                Appeal the verdict
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REASONS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="center">
+
+            <div class="kicker">
+                the evidence
+            </div>
+
+            <h2>
+                Reasons you're stuck with me
+            </h2>
+
+        </div>
+
+
+        <div class="reasons">
+
+            <div
+                class="reason"
+                onclick="toast('Because you make me smile. 🫶🏻')">
+
+                <b>
+                    01 · The smile problem
+                </b>
+
+                <span class="sub">
+                    You somehow make me smile every time we talk.
+                </span>
+
+            </div>
+
+
+            <div
+                class="reason"
+                onclick="toast('Yes, I remember the cute memories. 👀')">
+
+                <b>
+                    02 · The memory problem
+                </b>
+
+                <span class="sub">
+                    You've already collected way too many cute memories.
+                </span>
+
+            </div>
+
+
+            <div
+                class="reason"
+                onclick="toast('No refunds. No exchanges. 💀💗')">
+
+                <b>
+                    03 · The contract
+                </b>
+
+                <span class="sub">
+                    Apparently I have decided you're stuck with me.
+                </span>
+
+            </div>
+
+
+            <div
+                class="reason"
+                onclick="toast('Happy birthday, shameless boy. 🎂')">
+
+                <b>
+                    04 · Final evidence
+                </b>
+
+                <span class="sub">
+                    You are simply you. And somehow, I like that a lot.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="kicker">
+                from me to you
+            </div>
+
+            <div class="letter">
+
+dear patidev 
+
+I hope this year brings you all the happiness, success, and little moments that make you smile. I’m really glad you’re in my life, 
+you make me smile every time we talk 
+
+Thank you for being you, for making me smile, and for giving me so many cute memories already. I hope your birthday is as amazing as you are.
+
+Stay happy .stay mine  
+
+Happy Birthday, pookie. 🎂🫶🏻 Love youuu! 💕
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ENDING -->
+
+<section class="final">
+
+    <div class="container">
+
+        <div class="card final-box center">
+
+            <div class="kicker">
+                one last thing...
+            </div>
+
+            <h2>
+                Congratulations! 🎉
+            </h2>
+
+            <p
+                class="sub"
+                style="font-size:15px;line-height:2">
+
+                You have successfully survived another year
+                of being ridiculously shameless.<br>
+
+                Unfortunately for you, you're stuck with me now.<br>
+
+                So here's to another year of your nonsense,
+                my complaints, your shamelessness,
+                and a LOT more memories.
+
+            </p>
+
+            <h2 style="font-size:38px">
+                Happy Birthday, patidev. 🎂💗
+            </h2>
+
+            <p style="font-weight:600;color:#ffb7d6">
+                Stay happy. Stay shameless. Stay mine. 🫶🏻
+            </p>
+
+            <button
+                class="btn"
+                onclick="celebrate()">
+
+                One last surprise ✨
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    made with questionable levels of affection
+    & a little bit of chaos 💗
+</footer>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+function openSurprise() {
+
+    document
+        .getElementById("main")
+        .classList
+        .remove("hidden");
+
+    document
+        .getElementById("main")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+    for(let i = 0; i < 10; i++) {
+
+        setTimeout(
+            () => makeHeart(),
+            i * 100
+        );
+
+    }
+
+}
+
+
+function toast(message) {
+
+    const t =
+        document.getElementById("toast");
+
+    t.textContent = message;
+
+    t.classList.add("show");
+
+    clearTimeout(window.tt);
+
+    window.tt = setTimeout(
+        () => t.classList.remove("show"),
+        2200
+    );
+
+}
+
+
+function makeHeart() {
+
+    const h =
+        document.createElement("div");
+
+    h.className = "heart";
+
+    h.textContent =
+        ["♡","♥","💗","💞"]
+        [Math.floor(Math.random() * 4)];
+
+    h.style.left =
+        Math.random() * 100 + "vw";
+
+    h.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    h.style.fontSize =
+        (14 + Math.random() * 14) + "px";
+
+    document.body.appendChild(h);
+
+    setTimeout(
+        () => h.remove(),
+        10000
+    );
+
+}
+
+
+setInterval(
+    makeHeart,
+    900
+);
+
+
+function celebrate() {
+
+    toast(
+        "Okay fine... you deserve all the birthday love. 💗"
+    );
+
+    for(let i = 0; i < 28; i++) {
+
+        setTimeout(() => {
+
+            const b =
+                document.createElement("div");
+
+            b.className = "burst";
+
+            b.textContent =
+                ["💗","♡","✨","🎉","💕"]
+                [Math.floor(Math.random() * 5)];
+
+            b.style.left = "50%";
+            b.style.top = "55%";
+
+            b.style.setProperty(
+                "--x",
+                (Math.random() * 360 - 180) + "px"
+            );
+
+            b.style.setProperty(
+                "--y",
+                (Math.random() * 360 - 180) + "px"
+            );
+
+            document.body.appendChild(b);
+
+            setTimeout(
+                () => b.remove(),
+                1100
+            );
+
+        }, i * 35);
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>

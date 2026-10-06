@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, Pookie 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(180,80,180,.22),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(120,70,200,.2),transparent 30%),
+        linear-gradient(135deg,#09000f,#18051f,#0c0015);
+    overflow-x:hidden;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    pointer-events:none;
+    animation:floatUp linear forwards;
+    opacity:.75;
+    z-index:1;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) scale(.8) rotate(0deg);
+        opacity:0;
+    }
+    15%{
+        opacity:.8;
+    }
+    100%{
+        transform:translateY(-110vh) scale(1.4) rotate(25deg);
+        opacity:0;
+    }
+}
+
+/* MAIN */
+
+.container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    position:relative;
+    z-index:2;
+}
+
+.screen{
+    width:100%;
+    max-width:600px;
+    text-align:center;
+}
+
+.small{
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.65;
+}
+
+h1{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(42px,12vw,75px);
+    line-height:1;
+    margin:18px 0;
+    background:linear-gradient(90deg,#fff,#ffb9e9,#d8b5ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    font-size:15px;
+    opacity:.75;
+    line-height:1.7;
+}
+
+/* BUTTON */
+
+button{
+    border:none;
+    cursor:pointer;
+    color:white;
+    font-family:'Poppins',sans-serif;
+}
+
+.main-btn{
+    margin-top:30px;
+    padding:15px 28px;
+    border-radius:40px;
+    font-size:15px;
+    font-weight:600;
+    background:linear-gradient(135deg,#c35aa8,#7444c8);
+    box-shadow:0 10px 35px rgba(180,70,190,.3);
+    transition:.25s;
+}
+
+.main-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.main-btn:active{
+    transform:scale(.96);
+}
+
+/* ENVELOPE */
+
+.envelope{
+    width:180px;
+    height:120px;
+    margin:35px auto 20px;
+    position:relative;
+    background:#a9579e;
+    border-radius:8px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    cursor:pointer;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#c06ab1;
+    clip-path:polygon(0 0,50% 58%,100% 0);
+}
+
+.envelope:after{
+    content:"💌";
+    position:absolute;
+    font-size:38px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-40%);
+}
+
+/* POPUP */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(4,0,8,.78);
+    backdrop-filter:blur(10px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+    z-index:50;
+}
+
+.overlay.show{
+    display:flex;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.popup{
+    width:100%;
+    max-width:520px;
+    max-height:85vh;
+    overflow-y:auto;
+    background:
+        linear-gradient(145deg,rgba(54,19,64,.98),rgba(24,7,34,.98));
+    border:1px solid rgba(255,190,242,.18);
+    border-radius:28px;
+    padding:30px 24px;
+    box-shadow:0 30px 100px rgba(0,0,0,.55);
+    animation:pop .35s cubic-bezier(.2,1.4,.4,1);
+    position:relative;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(.75) translateY(30px);
+        opacity:0;
+    }
+    to{
+        transform:scale(1) translateY(0);
+        opacity:1;
+    }
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:12px;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    font-size:18px;
+}
+
+.popup h2{
+    font-family:'DM Serif Display',serif;
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.popup p{
+    font-size:14px;
+    line-height:1.8;
+    opacity:.88;
+}
+
+/* LETTER */
+
+.letter{
+    background:rgba(255,255,255,.055);
+    border-radius:18px;
+    padding:22px;
+    text-align:left;
+    margin-top:20px;
+}
+
+.letter p{
+    line-height:1.9;
+    margin-bottom:14px;
+}
+
+/* METER */
+
+.meter{
+    margin:25px 0;
+}
+
+.meter-bg{
+    height:18px;
+    background:rgba(255,255,255,.1);
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.meter-fill{
+    height:100%;
+    width:97%;
+    background:linear-gradient(90deg,#ff79c8,#a96bff);
+    border-radius:30px;
+    animation:fillMeter 1.5s ease;
+}
+
+@keyframes fillMeter{
+    from{width:0}
+    to{width:97%}
+}
+
+.percent{
+    font-size:42px;
+    font-weight:700;
+    margin:15px 0 5px;
+}
+
+/* REASONS */
+
+.reason{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.06);
+    padding:17px;
+    margin:12px 0;
+    border-radius:17px;
+    text-align:left;
+}
+
+.reason span{
+    font-size:23px;
+    margin-right:8px;
+}
+
+/* NEXT BUTTON */
+
+.next{
+    margin-top:22px;
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    background:rgba(255,255,255,.1);
+    font-weight:600;
+    transition:.2s;
+}
+
+.next:hover{
+    background:rgba(255,255,255,.16);
+}
+
+/* FINAL */
+
+.final-title{
+    font-size:45px !important;
+}
+
+.final-message{
+    margin-top:18px;
+    line-height:1.9 !important;
+}
+
+.signature{
+    margin-top:20px;
+    font-family:'DM Serif Display',serif;
+    font-size:24px;
+    color:#ffb7e7;
+}
+
+/* LAST SURPRISE */
+
+.mystery{
+    font-size:70px;
+    margin:10px 0 20px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-8px) rotate(4deg)}
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translateX(-50%) translateY(30px);
+    background:rgba(35,10,43,.95);
+    border:1px solid rgba(255,255,255,.12);
+    padding:13px 20px;
+    border-radius:30px;
+    opacity:0;
+    pointer-events:none;
+    transition:.35s;
+    z-index:100;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* HEART BURST */
+
+.burst{
+    position:fixed;
+    left:50%;
+    top:50%;
+    pointer-events:none;
+    z-index:200;
+    font-size:25px;
+    animation:burst 1.3s ease-out forwards;
+}
+
+@keyframes burst{
+    0%{
+        transform:translate(-50%,-50%) scale(.3);
+        opacity:1;
+    }
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.5)
+            rotate(25deg);
+        opacity:0;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .container{
+        padding:20px;
+    }
+
+    .popup{
+        padding:28px 19px;
+        border-radius:24px;
+    }
+
+    .popup h2{
+        font-size:31px;
+    }
+
+    .final-title{
+        font-size:38px !important;
+    }
+
+    .letter{
+        padding:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="screen">
+
+        <div class="small">A tiny birthday surprise</div>
+
+        <h1>Happy Birthday,<br>Pookie 💗</h1>
+
+        <p class="subtitle">
+            Someone made something for you...
+            <br>
+            Unfortunately, that someone knows exactly how shameless you are. 👀
+        </p>
+
+        <div class="envelope" onclick="openPopup('intro')"></div>
+
+        <button class="main-btn" onclick="openPopup('intro')">
+            Open your surprise 💌
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- INTRO POPUP -->
+
+<div class="overlay" id="intro">
+
+    <div class="popup">
+
+        <button class="close" onclick="closePopup('intro')">×</button>
+
+        <div class="mystery">🎀</div>
+
+        <h2>Okay, pookie...</h2>
+
+        <p>
+            Before you continue, just know that this website contains
+            evidence of your ridiculousness.
+        </p>
+
+        <p style="margin-top:12px;">
+            There may also be excessive amounts of cuteness.
+            Proceed at your own risk. 😌
+        </p>
+
+        <button class="next" onclick="nextPopup('intro','shameless')">
+            I'm ready 👀
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SHAMELESS POPUP -->
+
+<div class="overlay" id="shameless">
+
+    <div class="popup">
+
+        <button class="close" onclick="closePopup('shameless')">×</button>
+
+        <div class="small">Official investigation</div>
+
+        <h2>How shameless are you?</h2>
+
+        <div class="percent">97%</div>
+
+        <div class="meter">
+            <div class="meter-bg">
+                <div class="meter-fill"></div>
+            </div>
+        </div>
+
+        <p>
+            Scientists have studied the situation carefully.
+            The remaining 3% is probably just you pretending to behave.
+        </p>
+
+        <button class="next" onclick="nextPopup('shameless','reasons')">
+            Continue before I expose you 😭
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- REASONS POPUP -->
+
+<div class="overlay" id="reasons">
+
+    <div class="popup">
+
+        <button class="close" onclick="closePopup('reasons')">×</button>
+
+        <div class="small">Reasons you are special</div>
+
+        <h2>Fine, I'll be sweet 💗</h2>
+
+        <div class="reason">
+            <span>🫶🏻</span>
+            You make me smile every time we talk.
+        </div>
+
+        <div class="reason">
+            <span>🌷</span>
+            You somehow manage to make ordinary moments memorable.
+        </div>
+
+        <div class="reason">
+            <span>😭</span>
+            Your nonsense is unfortunately very entertaining.
+        </div>
+
+        <div class="reason">
+            <span>💌</span>
+            And you've already given me so many cute memories.
+        </div>
+
+        <button class="next" onclick="nextPopup('reasons','letter')">
+            There's a letter too 💌
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LETTER POPUP -->
+
+<div class="overlay" id="letter">
+
+    <div class="popup">
+
+        <button class="close" onclick="closePopup('letter')">×</button>
+
+        <div class="small">From me to you</div>
+
+        <h2>Dear patidev 💗</h2>
+
+        <div class="letter">
+
+            <p>
+                I hope this year brings you all the happiness, success,
+                and little moments that make you smile.
+            </p>
+
+            <p>
+                I’m really glad you’re in my life,
+                you make me smile every time we talk.
+            </p>
+
+            <p>
+                Thank you for being you, for making me smile,
+                and for giving me so many cute memories already.
+            </p>
+
+            <p>
+                I hope your birthday is as amazing as you are.
+            </p>
+
+            <p>
+                Stay happy. Stay mine.
+            </p>
+
+            <p>
+                Happy Birthday, pookie. 🎂🫶🏻
+                Love youuu! 💕
+            </p>
+
+        </div>
+
+        <button class="next" onclick="nextPopup('letter','last')">
+            Wait... there's one last surprise 🎁
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LAST SURPRISE -->
+
+<div class="overlay" id="last">
+
+    <div class="popup">
+
+        <button class="close" onclick="closePopup('last')">×</button>
+
+        <div class="mystery">🎁</div>
+
+        <div class="small">LAST SURPRISE</div>
+
+        <h2>Okay... one last thing.</h2>
+
+        <p>
+            You really thought the letter was the ending?
+            Cute. 😌
+        </p>
+
+        <p style="margin-top:12px;">
+            Tap the button. I promise the emotional damage is minimal.
+        </p>
+
+        <button class="main-btn" onclick="celebrate()">
+            Open it 👀💗
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FINAL POPUP -->
+
+<div class="overlay" id="final">
+
+    <div class="popup">
+
+        <div class="mystery">🎂</div>
+
+        <h2 class="final-title">Happy Birthday! 💗</h2>
+
+        <p class="final-message">
+
+            Congratulations! 🎉
+            <br><br>
+
+            You have successfully survived another year of being
+            ridiculously shameless.
+            <br><br>
+
+            Unfortunately for you, you're stuck with me now. 😌
+            <br><br>
+
+            So here's to another year of your nonsense,
+            my complaints, your shamelessness,
+            and a LOT more memories.
+            <br><br>
+
+            Happy Birthday, patidev. 🎂💗
+            <br>
+
+            Stay happy. Stay shameless. Stay mine. 🫶🏻
+
+        </p>
+
+        <div class="signature">
+            With love, your favourite headache 💕
+        </div>
+
+        <button class="next" onclick="finalSecret()">
+            One tiny secret 🤫
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SECRET FINAL -->
+
+<div class="overlay" id="secret">
+
+    <div class="popup">
+
+        <div class="mystery">💌</div>
+
+        <h2>Okay, THIS is actually the end.</h2>
+
+        <p style="font-size:16px;">
+            You're my favourite notification. 🫶🏻
+        </p>
+
+        <p style="margin-top:15px;">
+            Now go enjoy your birthday before I start adding
+            another 47 surprises to this website. 😭
+        </p>
+
+        <div class="signature">
+            Happy Birthday, Pookie 💗
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* POPUP FUNCTIONS */
+
+function openPopup(id){
+    document.getElementById(id).classList.add("show");
+}
+
+function closePopup(id){
+    document.getElementById(id).classList.remove("show");
+}
+
+function nextPopup(current,next){
+
+    closePopup(current);
+
+    setTimeout(function(){
+        openPopup(next);
+    },180);
+
+}
+
+
+/* TOAST */
+
+function toast(message){
+
+    const t=document.getElementById("toast");
+
+    t.textContent=message;
+    t.classList.add("show");
+
+    setTimeout(function(){
+        t.classList.remove("show");
+    },2200);
+
+}
+
+
+/* FLOATING HEARTS */
+
+const hearts=["💗","💖","💕","💘","💜","✨","♡"];
+
+function makeHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.textContent=
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        (12+Math.random()*20)+"px";
+
+    heart.style.animationDuration=
+        (5+Math.random()*6)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+        heart.remove();
+    },11000);
+
+}
+
+setInterval(makeHeart,700);
+
+
+/* HEART BURST */
+
+function celebrate(){
+
+    closePopup("last");
+
+    setTimeout(function(){
+
+        openPopup("final");
+
+        for(let i=0;i<35;i++){
+
+            const heart=document.createElement("div");
+
+            heart.className="burst";
+
+            heart.textContent=
+                hearts[Math.floor(Math.random()*hearts.length)];
+
+            heart.style.setProperty(
+                "--x",
+                (Math.random()*500-250)+"px"
+            );
+
+            heart.style.setProperty(
+                "--y",
+                (Math.random()*500-250)+"px"
+            );
+
+            document.body.appendChild(heart);
+
+            setTimeout(function(){
+                heart.remove();
+            },1400);
+
+        }
+
+    },250);
+
+}
+
+
+/* SECRET */
+
+function finalSecret(){
+
+    closePopup("final");
+
+    setTimeout(function(){
+
+        openPopup("secret");
+
+        toast("Okay okay... NOW it's really the end 😭💗");
+
+    },200);
+
+}
+
+
+/* CLICK OUTSIDE POPUP TO CLOSE */
+
+document.querySelectorAll(".overlay").forEach(function(overlay){
+
+    overlay.addEventListener("click",function(e){
+
+        if(e.target===overlay){
+            overlay.classList.remove("show");
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+  </html>
